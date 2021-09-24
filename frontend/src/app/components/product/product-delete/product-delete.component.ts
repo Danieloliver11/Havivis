@@ -10,8 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDeleteComponent implements OnInit {
   product: Product = {
-    name: '',
-    price: 0
+    nome: '',
+    valor: 0
   };
 
   constructor(

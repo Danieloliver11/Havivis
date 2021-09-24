@@ -3,15 +3,15 @@
     <form>
         <mat-form-field>
              <input matInput placeholder="Nome" 
-                [(ngModel)]="product.name" name="name"> 
+                [(ngModel)]="product.nome" name="name"> 
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Preço (R$)" 
-            [(ngModel)]="product.price" name="price"> 
+            [(ngModel)]="product.valor" name="price"> 
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Descrição" 
-            [(ngModel)]="product.description" name="description"> 
+            [(ngModel)]="product.descricao" name="description"> 
         </mat-form-field>
     </form>
     <button mat-raised-button (click)="createProduct()" color="primary">
