@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-title>Novo Funcionário</mat-card-title>
+    <form>
+        <mat-form-field>
+             <input matInput placeholder="Nome" 
+                [(ngModel)]="funcionario.nome" name="name"> 
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Email" 
+            [(ngModel)]="funcionario.email" name="email"> 
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Adm" 
+            [(ngModel)]="funcionario.adm" name="adm"> 
+        </mat-form-field>
+    </form>
+    <button mat-mini-fab (click)="createFuncionario()" color="primary">
+        <i class="material-icons ">
+            add
+        </i>
+    </button>
+    
+    <button mat-mini-fab (click)="cancel()" color="basic">
+        <i class="material-icons ">
+            close
+        </i>
+    </button>
+</mat-card>

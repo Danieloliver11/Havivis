@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-title>Excluir Funcionário</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome" 
+                [value]="funcionario.nome" name="nome" disabled>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Email" 
+            [value]="funcionario.email" name="email" disabled>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Adm" 
+            [value]="funcionario.adm" name="adm" disabled>
+        </mat-form-field>
+    </form>
+    <button mat-mini-fab (click)="deleteFuncionario()" color="warn">
+        <i class="material-icons ">
+            delete
+        </i>
+    </button>
+    <button mat-mini-fab (click)="cancel()" color="basic">
+        <i class="material-icons ">
+            close
+        </i>
+    </button>
+</mat-card>
