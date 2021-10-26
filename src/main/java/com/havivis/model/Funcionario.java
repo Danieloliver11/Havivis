@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -12,23 +11,22 @@ public class Funcionario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 	
 	@NotNull
-	private String login;
+	private String user;
 	
 	@NotNull
-	private int senha;
+	private String senha;
 	
 	@NotNull
 	private String nome;
 	
-	@NotNull
-	@Email
-	private String email;
 	
+	
+	private String email;
 	@NotNull
-	private boolean adm; // PARA SABER SE É ADM
+	private boolean tipo; // PARA SABER SE É ADM
 	
 	
 	
@@ -38,16 +36,16 @@ public class Funcionario {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getLogin() {
-		return login;
+	public String getUser() {
+		return user;
 	}
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUser(String login) {
+		this.user = login;
 	}
-	public Integer getSenha() {
+	public String getSenha() {
 		return senha;
 	}
-	public void setSenha(Integer senha) {
+	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 	public String getNome() {
@@ -62,11 +60,11 @@ public class Funcionario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public boolean isAdm() {
-		return adm;
+	public boolean getTipo() {
+		return tipo;
 	}
-	public void setAdm(boolean adm) {
-		this.adm = adm;
+	public void setTipo(boolean adm) {
+		this.tipo = adm;
 	}
 
 	

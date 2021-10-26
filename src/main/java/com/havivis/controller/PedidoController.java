@@ -16,50 +16,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.havivis.model.Pedido;
-import com.havivis.model.Produto;
 import com.havivis.repository.PedidorRepository;
-import com.havivis.repository.ProdutoRepository;
 
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/pedidos")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class ProdutoController {
-	
+public class PedidoController {
+
 	@Autowired
-	public ProdutoRepository produtoRepository;
+	public PedidorRepository pedidoRepository;
 	
 	
 	
 	///////////
 	
-	@GetMapping
-	public ResponseEntity<List<Produto>> findAll(){
-		
-		return ResponseEntity.ok(produtoRepository.findAll());
-	}
+	
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Produto> findAllById(@PathVariable long id){
+	public ResponseEntity<Pedido> findAllById(@PathVariable long id){
 		
-		return produtoRepository.findById(id)
+		return pedidoRepository.findById(id)
 				.map(x -> ResponseEntity.ok(x))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping
-	public ResponseEntity<Produto> postFuncionario(@RequestBody Produto produto){
+	public ResponseEntity<Pedido> postFuncionario(@RequestBody Pedido pedido){
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
+		return ResponseEntity.status(HttpStatus.CREATED).body(pedidoRepository.save(pedido));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Produto> putFuncionario(@RequestBody Produto produto){
+	public ResponseEntity<Pedido> putFuncionario(@RequestBody Pedido pedido){
 		
-		return ResponseEntity.ok(produtoRepository.save(produto));
+		return ResponseEntity.ok(pedidoRepository.save(pedido));
 	}
 	
 	@DeleteMapping("/{id}")
 	public void deletaFuncionario(@PathVariable long id) {
-		produtoRepository.deleteById(id); 
+		pedidoRepository.deleteById(id); 
 	}
 }

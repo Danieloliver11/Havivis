@@ -1,5 +1,6 @@
 package com.havivis.model;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.crypto.Data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -18,7 +20,7 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private int valorExtra;
-	private String Observacao;
+	private String observacao;
 	private String formaDePagamento; //--
 	private String status;
 	
@@ -30,11 +32,15 @@ public class Pedido {
 	@JsonIgnoreProperties("Pedido")
 	private Funcionario funcionario;
 	
-	@OneToMany(mappedBy = "pedidos", cascade = CascadeType.ALL)
-	private List<Produto> produtos;
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)//
+	private List<ProdutoPedido> produtoPedidos;
+	
+	private LocalDateTime dataHora = LocalDateTime.now();
+	
+   	
 
 	public Long getId() {
-		return id; 
+		return id;
 	}
 
 	public void setId(Long id) {
@@ -50,11 +56,11 @@ public class Pedido {
 	}
 
 	public String getObservacao() {
-		return Observacao;
+		return observacao;
 	}
 
 	public void setObservacao(String observacao) {
-		Observacao = observacao;
+		this.observacao = observacao;
 	}
 
 	public String getFormaDePagamento() {
@@ -89,13 +95,24 @@ public class Pedido {
 		this.funcionario = funcionario;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
+	public List<ProdutoPedido> getProdutoPedidos() {
+		return produtoPedidos;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setProdutoPedidos(List<ProdutoPedido> produtoPedidos) {
+		this.produtoPedidos = produtoPedidos;
 	}
+
+	public LocalDateTime getDataHora() {
+		return dataHora;
+	}
+
+	public void setDataHora(LocalDateTime dataHora) {
+		this.dataHora = dataHora;
+	}
+
+	
+
 	
 	
 	

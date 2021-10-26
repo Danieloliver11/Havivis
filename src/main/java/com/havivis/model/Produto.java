@@ -22,10 +22,6 @@ public class Produto {
 	@NotBlank
 	private String nome; 
 	
-	@ManyToOne
-	@JsonIgnoreProperties("Produto")
-	private Pedido pedidos;
-	
 	public Long getId() {
 		return id;
 	}

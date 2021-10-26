@@ -1,8 +1,8 @@
 package com.havivis.controller;
 
 import java.util.List;
+import java.util.Optional;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.havivis.Service.FuncionarioService;
 import com.havivis.model.Funcionario;
+import com.havivis.model.FuncionarioLogin;
 import com.havivis.repository.FuncionarioRepository;
 
 
@@ -28,6 +30,9 @@ public class FuncionarioController {
 	
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
+	
+	@Autowired
+	public FuncionarioService funcionarioService;
 	
 	@GetMapping
 	public ResponseEntity<List<Funcionario>> findAll(){
@@ -43,11 +48,7 @@ public class FuncionarioController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@PostMapping
-	public ResponseEntity<Funcionario> postFuncionario(@RequestBody Funcionario funcionario){
-		
-		return ResponseEntity.status(HttpStatus.CREATED).body(funcionarioRepository.save(funcionario));
-	}
+	
 	
 	@PutMapping
 	public ResponseEntity<Funcionario> putFuncionario(@RequestBody Funcionario funcionario){
@@ -59,4 +60,28 @@ public class FuncionarioController {
 	public void deletaFuncionario(@PathVariable long id) {
 		funcionarioRepository.deleteById(id);
 	}
+	
+	//====-==-=-=-=-==-=-=-=--==--==--=-=-=-=-=-=-=-=-=-=-=-=-=-=-NOVO USUARIO-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=--=--=-==--=//
+	
+	
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Funcionario> postFuncionario(@RequestBody Funcionario funcionario){
+		
+		Optional<Funcionario> func = funcionarioService.cadastrarFuncionario(funcionario);
+		
+		try {
+			return ResponseEntity.ok(func.get());
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().build();
+		}
+	}
+	//====-==-=-=-=-==-=-=-=--==--==--=-=-=-=-=-=-=-=-=-=-=-=-=-=-LOGAR USUARIO-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=--=--=-==--=//
+	
+	
+	@PostMapping("/logar")
+	public ResponseEntity<FuncionarioLogin> autenticarLogin(@RequestBody Optional<FuncionarioLogin> funcLogin){
+		
+		return funcionarioService.logar(funcLogin).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+	
 }
