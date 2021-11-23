@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.havivis.model.Cliente;
-import com.havivis.model.Pedido;
 import com.havivis.repository.ClienteRepository;
-import com.havivis.repository.PedidorRepository;
 
 @RestController
 @RequestMapping("/clientes")

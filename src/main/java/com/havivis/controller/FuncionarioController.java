@@ -48,7 +48,7 @@ public class FuncionarioController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	
+		
 	
 	@PutMapping
 	public ResponseEntity<Funcionario> putFuncionario(@RequestBody Funcionario funcionario){

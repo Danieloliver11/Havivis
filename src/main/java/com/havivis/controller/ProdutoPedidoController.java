@@ -15,50 +15,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.havivis.model.Pedido;
-import com.havivis.repository.PedidorRepository;
+import com.havivis.model.ProdutoPedido;
+import com.havivis.repository.ProdutoPedidoRepository;
 
 @RestController
-@RequestMapping("/pedidos")
+@RequestMapping("/produtoPedido")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class PedidoController {
+public class ProdutoPedidoController {
 
 	@Autowired
-	public PedidorRepository pedidoRepository;
-	
-	
-	
-	///////////
-	
-	
+	public ProdutoPedidoRepository repository;
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Pedido> findAllById(@PathVariable long id){
+	public ResponseEntity<ProdutoPedido> findAllById(@PathVariable long id){
 		
-		return pedidoRepository.findById(id)
+		return repository.findById(id)
 				.map(x -> ResponseEntity.ok(x))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	@GetMapping
-	public ResponseEntity<List<Pedido>> findAll(){
+	public ResponseEntity<List<ProdutoPedido>> findAll(){
 		
-		return ResponseEntity.ok(pedidoRepository.findAll());
+		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@PostMapping
-	public ResponseEntity<Pedido> postFuncionario(@RequestBody Pedido pedido){
+	public ResponseEntity<ProdutoPedido> postFuncionario(@RequestBody ProdutoPedido produtoPedido){
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(pedidoRepository.save(pedido));
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produtoPedido));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Pedido> putFuncionario(@RequestBody Pedido pedido){
+	public ResponseEntity<ProdutoPedido> putFuncionario(@RequestBody ProdutoPedido produtoPedido){
 		
-		return ResponseEntity.ok(pedidoRepository.save(pedido));
+		return ResponseEntity.ok(repository.save(produtoPedido));
 	}
 	
 	@DeleteMapping("/{id}")
 	public void deletaFuncionario(@PathVariable long id) {
-		pedidoRepository.deleteById(id); 
+		repository.deleteById(id); 
 	}
 }

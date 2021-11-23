@@ -30,6 +30,11 @@ public class Funcionario {
 	
 	
 	
+	
+	public Funcionario() {
+		super();
+	}
+	
 	public Long getId() {
 		return id;
 	}

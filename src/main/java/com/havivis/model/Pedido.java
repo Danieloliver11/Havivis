@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.xml.crypto.Data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -37,7 +36,12 @@ public class Pedido {
 	
 	private LocalDateTime dataHora = LocalDateTime.now();
 	
+	
    	
+
+	public Pedido() {
+		super();
+	}
 
 	public Long getId() {
 		return id;

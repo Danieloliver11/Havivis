@@ -7,9 +7,9 @@ public class FuncionarioLogin {
 	
 	private String nome;
 	
-	private String user;
+	private String user;//
 	
-	private String senha;
+	private String senha;//
 	
 	private String token;
 	
@@ -18,6 +18,10 @@ public class FuncionarioLogin {
 	private String email;
 	
 	
+
+	public FuncionarioLogin() {
+		super();
+	}
 
 	public String getEmail() {
 		return email;

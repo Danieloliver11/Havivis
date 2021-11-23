@@ -10,9 +10,8 @@ import com.havivis.model.Funcionario;
 
 public class UserDetailsImplementation implements UserDetails {
 
-	/**
-	 * 
-	 */
+
+	 
 	private static final long serialVersionUID = 1L;
 	
 	private String userName;

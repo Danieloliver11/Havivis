@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.havivis.model.Pedido;
 import com.havivis.model.Produto;
-import com.havivis.repository.PedidorRepository;
 import com.havivis.repository.ProdutoRepository;
 
 @RestController
