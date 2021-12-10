@@ -23,13 +23,7 @@ public class ProdutoPedido implements Serializable {
 	@ManyToOne
 	private Pedido pedido;
 	
-	
-//	@Id
-//	@ManyToOne
-//	private Produto produto;
-//	@Id
-//	@ManyToOne
-//	private Pedido pedido;
+
 	
 	private int quantidade;
 	
